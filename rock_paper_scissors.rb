@@ -1,12 +1,11 @@
 class RockPaperScissors
+#  attr_reader :get_user_input, :computer_input
   def initialize
     display_instructions
-    user_input = get_user_input
-    computer_input = get_computer_input
-    compare_moves
-
-
-
+    @computer_input = get_computer_input
+    puts @computer_input
+    @user_input = get_user_input
+    move_comparison
   end
 
   def display_instructions
@@ -26,7 +25,10 @@ class RockPaperScissors
     ["r", "p", "s"].sample
   end
 
-
+  def move_comparison
+    @user_input == @computer_input
+    puts "Tie"
+  end
 end
 
 =begin
