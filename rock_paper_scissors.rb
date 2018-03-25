@@ -1,3 +1,4 @@
+require "pry"
 class RockPaperScissors
 #  attr_reader :get_user_input, :computer_input
   def initialize
@@ -19,6 +20,7 @@ class RockPaperScissors
       game_choice = gets.chomp
       valid_choice = ["r", "p", "s"].include?(game_choice)
     end
+    return game_choice
   end
 
   def get_computer_input
@@ -26,8 +28,17 @@ class RockPaperScissors
   end
 
   def move_comparison
-    @user_input == @computer_input
-    puts "Tie"
+    if @user_input == @computer_input
+      puts "Tie"
+    else
+      versus = [["r", "p", "s"].index(@computer_input), ["r", "p", "s"].index(@user_input)]
+      winning_combination = [[0, 1], [1, 2], [2, 0]]
+      if winning_combination.include?(versus)
+        puts "You fucking win"
+      else
+        puts "You lose"
+      end
+    end
   end
 end
 
